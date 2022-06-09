@@ -1,5 +1,2 @@
 ﻿  adress02.cpp
-C:\Users\newya\source\repos\adress02\adress02.cpp(50,17): warning C4091: : пропускается слева от "adress", когда ни одна переменная не объявлена
-C:\Users\newya\source\repos\adress02\adress02.cpp(76,10): error C2275: adress: недопустимое использование этого типа в качестве выражения
-C:\Users\newya\source\repos\adress02\adress02.cpp(9): message : см. объявление "adress"
-C:\Users\newya\source\repos\adress02\adress02.cpp(77,2): error C2143: синтаксическая ошибка: отсутствие ";" перед "}"
+  adress02.vcxproj -> C:\Users\newya\source\repos\adress02\x64\Debug\adress02.exe

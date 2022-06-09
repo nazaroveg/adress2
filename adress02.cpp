@@ -9,8 +9,7 @@
 class address
 {
 public:
-	address(std::string ci, std::string st, int hou, int apart) : city(ci), street(st), house(hou), apartment(apart)
-	{}
+	
 
 	std::string get_output_address(std::string ci, std::string st, int hou, int apart)
 	{
@@ -19,22 +18,37 @@ public:
 		std::string out_add = (ci + ", " + st + ", " + a + ", " + b);
 		return out_add;
 	}
-	/*void fread(std::ifstream& fin)
+	void sort(std::string s_arr, int size)
 	{
-		fin >> city;
-		fin >> street;
-		fin >> house_number;
-		fin >> apartment;
-	}*/
+		std::string* arr_2 = new std::string[size]();
+
+		for (int i = 0; i < size; ++i)
+		{
+			arr_2[s_arr[i]]++;
+		}
+		int k{};
+		for (int i = 0; i < size; i++) {
+			while (arr_2[i] != "\0") {
+				s_arr[k] = i;
+				k++;
+				arr_2[i]--;
+			}
+		}
+
+		delete[]arr_2;
 
 
 
+	}
 
 
 private:
 	std::string city, street;
 	int house, apartment;
 };
+
+
+
 
 int main()
 {
@@ -55,29 +69,37 @@ int main()
 		return -2;
 	}
 	
-	std::string a;
-	std::string b;
-	int c;
-	int d;
+	
 	address* add = new address[size];
 	
-	
 	std::string a;
 	std::string b;
 	int c;
 	int d;
-	
+	std::string* result = new std::string[size];
 
 	for (int i = 0; i < size; ++i)
 	{
-		fin >> a;
+
+		/*fin >> a;
 		fin >> b;
 		fin >> c;
-		fin >> d;
-		add->get_output_address(a, b, c, d);
+		fin >> d;*/
+		add[i] = getline(fin);
 
+		result[i] = add->get_output_address(a, b, c, d);
 	}
+	add->sort(result, size);
+
 	
+	fin.close();
+	
+	
+	
+		std::cout << result << std::endl;
+		
+	
+
 }
 
 
