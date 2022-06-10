@@ -1,2 +1,6 @@
 ﻿  adress02.cpp
-  adress02.vcxproj -> C:\Users\newya\source\repos\adress02\x64\Debug\adress02.exe
+C:\Users\newya\source\repos\adress02\adress02.cpp(35,16): error C2677: бинарный "[": не найден глобальный оператор, принимающий тип "address" (или приемлемое преобразование отсутствует)
+C:\Users\newya\source\repos\adress02\adress02.cpp(40,1): error C2679: бинарный "=": не найден оператор, принимающий правый операнд типа "int" (или приемлемое преобразование отсутствует)
+C:\Users\newya\source\repos\adress02\adress02.cpp(56,1): message : может быть "address &address::operator =(address &&)"
+C:\Users\newya\source\repos\adress02\adress02.cpp(56,1): message : или       "address &address::operator =(const address &)"
+C:\Users\newya\source\repos\adress02\adress02.cpp(40,1): message : при попытке сопоставить список аргументов "(address, int)"
