@@ -85,7 +85,9 @@ int main()
 		
 		
 	}
-
+	fout.close();
+	delete[] add;
+	delete[] result;
 }
 
 
