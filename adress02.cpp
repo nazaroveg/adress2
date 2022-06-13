@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 #include <Windows.h>
-
+#include <algorithm>
 
 class address
 {
@@ -20,36 +20,7 @@ public:
 		return out_add;
 	}
 	
-	void set(std::string ci, std::string st, int hou, int apart)
-	{
-		city = ci, street = st, house = hou; apartment = apart;
-	}
-	void sort(address *arr, int size )
-	{
-		
-
-		address* arr_2 = new address[size]();
-
-		for (int i = 0; i < size; ++i)
-		{
-			arr_2[arr[i]]++;
-		}
-		int k{};
-		for (int i = 0; i < size; i++) {
-			while (arr_2[i] != ' ') {
-				arr[k] = i;
-				k++;
-				arr_2[i]--;
-			}
-		}
-
-		delete[]arr_2;
-	}
-
-
 	
-
-
 private:
 	std::string city = {0}, street = {0};
 	int house = 0; int apartment = 0;
@@ -79,12 +50,12 @@ int main()
 	
 	
 	address* add = new address[size];
-	address adr;
+	
 	std::string a;
 	std::string b;
 	int c;
 	int d;
-	
+	std::string *result = new std::string [size];
 
 	for (int i = 0; i < size; ++i)
 	{
@@ -93,13 +64,27 @@ int main()
 		fin >> b;
 		fin >> c;
 		fin >> d;
-		add[i].set(a, b, c, d);	
-
+		
+		result[i]  = add[i].get_output_address(a, b, c, d);
 	}
-	fin.close();
-	adr.sort(add, size);
 	
+	fin.close();
+	std::sort(result, result + size);
+	
+	std::ofstream fout;
+	fout.open("out.txt");
+	if (!fout.is_open()) {
+		std::cout << "Error: unable to open file " << "out.txt" << " for writing" << '\n';
+		return -3;
+	}
+	fout << size << std::endl;
 
+	for (int i = 0; i < size; ++i)
+	{
+		fout << result[i] << std::endl;;
+		
+		
+	}
 
 }
 
