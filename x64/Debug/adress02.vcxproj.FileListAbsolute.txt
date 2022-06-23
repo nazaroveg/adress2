@@ -1,2 +1,3 @@
 C:\Users\newya\source\repos\adress02\x64\Debug\adress02.exe
 C:\Users\nemez\source\repos\adress2\x64\Debug\adress02.exe
+C:\Users\newya\source\repos\adress2\x64\Debug\adress02.exe

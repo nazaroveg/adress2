@@ -10,14 +10,23 @@
 class address
 {
 public:
-	address (){city, street, house, apartment;}
+	address(std::string, std::string, int, int) { }
+	address(){}
 	
-	std::string get_output_address(std::string ci, std::string st, int hou, int apart)
+	
+	std::string get_output_address(std::string ci, std::string st, int hou, int apart) 
 	{
 		std::string a = std::to_string(hou);
 		std::string b = std::to_string(apart);
 		std::string out_add = (ci + ", " + st + ", " + a + ", " + b);
 		return out_add;
+	}
+	void set_all(std::string ci, std::string st, int hou, int apart)
+	{
+		city = ci;
+		street = st;
+		house = hou;
+		apartment = apart;
 	}
 	
 	
@@ -36,7 +45,8 @@ int main()
 	
 	std::ifstream fin;
 	fin.open("in.txt");
-	if (!fin.is_open()) {
+	if (!fin.is_open()) 
+	{
 		std::cout << "Error: файл не открыт " << "in.txt"  << '\n';
 		return -1;
 	}
@@ -50,13 +60,12 @@ int main()
 	
 	
 	address* add = new address[size];
-	
+	address adr;
 	std::string a;
 	std::string b;
 	int c;
 	int d;
-	std::string *result = new std::string [size];
-
+	
 	for (int i = 0; i < size; ++i)
 	{
 
@@ -64,30 +73,49 @@ int main()
 		fin >> b;
 		fin >> c;
 		fin >> d;
-		
-		result[i]  = add[i].get_output_address(a, b, c, d);
-	}
 	
+		//add[i].set_all(a, b, c, d);
+	add[i].get_output_address(a, b, c, d);
+	}
 	fin.close();
-	std::sort(result, result + size);
+	
+	address* temp = new address[1];
+	
+	for (int i = 0; i < size - 1; i++) {
+		for (int j = 0; j < size - i - 1; j++) {
+			if (&add[j] > &add[j + 1]) {
+				
+				*temp = add[j];
+				add[j] = add[j + 1];
+				add[j + 1] = *temp;
+			}
+		}
+	}
+	delete[] temp;
+	
+	
+	
 	
 	std::ofstream fout;
 	fout.open("out.txt");
-	if (!fout.is_open()) {
+	if (!fout.is_open()) 
+	{
 		std::cout << "Error: unable to open file " << "out.txt" << " for writing" << '\n';
 		return -3;
 	}
 	fout << size << std::endl;
 
+	
+
 	for (int i = 0; i < size; ++i)
-	{
-		fout << result[i] << std::endl;;
-		
+	{		
+		fout << &add[i] << std::endl;
 		
 	}
+
 	fout.close();
 	delete[] add;
-	delete[] result;
+	
 }
 
 
